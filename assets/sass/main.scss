@@ -1,9 +1,9 @@
-:root {
-  --primary-color   : #72c2cf;
-  --secondary-color : #373b6b;
-  --dark            : #33313b;
-  --light           : #F3F3F3;
-}
+// :root {
+//   --primary-color   : #72c2cf;
+//   --secondary-color : #373b6b;
+//   --dark            : #33313b;
+//   --light           : #F3F3F3;
+// }
 
 * {
   box-sizing: inherit;
@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'poppins', sans-serif;
   color: var(--dark);
   margin-top: 0;
+  hyphens: none;
 }
 
 h4, h5, h6 {
@@ -67,10 +68,25 @@ h6 {
   line-height: 2.25rem;
 }
 
-p {
+p, li {
   margin-bottom: 2rem;
   font-size: 1.4em;
   line-height: 2.25rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+li {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 small {
@@ -113,6 +129,9 @@ footer {
   
     li {
       display: inline-block;
+      padding: 0;
+      margin: 0;
+      border: none;
   
       &:last-child {
         padding-right: 0;
@@ -156,25 +175,42 @@ hr {
 }
 
 /* code */
+// pre {
+//   // border: 1px solid darken(var({#--primary-color}), 15%);
+//   border-radius: 5px;
+//   padding: 2em;
+//   overflow-x: auto;
+//   background-color: var(--dark);
+//   // background: darken(var({#--primary-color}), 5%);
+// }
+
+// code {
+//   color: var(--dark);
+// }
+
+// pre code {
+//   // display: block;
+//   // overflow-x: auto;
+//   background: none;
+//   color: var(--light);
+//   text-align: left;
+//   // font-size: 1.5em;
+// }
+
 pre {
-  // border: 1px solid darken(var({#--primary-color}), 15%);
-  border-radius: 5px;
-  padding: 2em;
-  overflow-x: auto;
-  background-color: var(--light);
-  // background: darken(var({#--primary-color}), 5%);
-}
-
-code {
-  color: var(--dark);
-}
-
-pre code {
-  display: block;
-  overflow-x: auto;
-  background: none;
+  background: var(--dark);
   color: var(--light);
-  font-size: 1.5em;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+  border-radius: 3px;
 }
 
 /* elements */
@@ -209,19 +245,6 @@ thead, tfoot, tr:nth-child(even) {
   background: #eee;
 }
 
-ul.underlined {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: lighter;
-  letter-spacing: .5px;
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    border-bottom: #BFBFBF solid thin;
-    padding: 10px 0;
-  }
-}
 
 a.btn {
   font-family: 'poppins', sans-serif;
@@ -246,6 +269,7 @@ a.btn {
 
   &.no-bg {
     background: transparent;
+    color: var(--secondary-color);
   }
 }
 
