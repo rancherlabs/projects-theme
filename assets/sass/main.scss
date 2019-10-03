@@ -211,6 +211,7 @@ pre {
   display: block;
   word-wrap: break-word;
   border-radius: 3px;
+  white-space: pre-wrap;
 }
 
 /* elements */
@@ -352,6 +353,15 @@ section {
   // }
 }
 
+.grid-dynamic {
+  display:flex;
+
+  h5 {
+    margin: 0;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
 
 .spacer {
   padding: 4rem;
@@ -669,7 +679,7 @@ section {
     grid-template-columns: repeat(8,1fr);
 
     .white {
-      grid-row: 3/span 4;
+      // grid-row: 3/span 4;
       grid-column: 2/span 6;
     }
     .bg-primary {
