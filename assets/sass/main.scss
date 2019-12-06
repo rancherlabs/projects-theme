@@ -125,7 +125,8 @@ footer {
   .menu {
     padding: 0;
     margin: 0;
-    display: inherit;
+    flex-direction: row;
+    align-items: center;
   
     li {
       display: inline-block;
@@ -254,7 +255,7 @@ a.btn {
 
   &.no-bg {
     background: transparent;
-    color: var(--secondary-color);
+    color: var(--secondary-color)!important;
   }
 }
 
