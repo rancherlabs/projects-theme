@@ -16,6 +16,9 @@
 	{{ with .OutputFormats.Get "RSS" -}}
 		{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
+
+	<!-- github buttons -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
 	{{ partial "header" . }}
