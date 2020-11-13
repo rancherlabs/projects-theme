@@ -3,9 +3,6 @@
 {{- if eq .Site.Params.gtm_datalayer "basic"}}  <script>
 	window.dataLayer = window.dataLayer || [];
 	window.dataLayer.push({
-		{{- if .ExpiryDate}}'pageExpiryDate': '{{ .ExpiryDate.format  "2006-01-02"  }}',{{- end }}
-		'pagePublishDate': '{{ .PublishDate.Format "2006-01-02" }}',
-		'pageModifiedDate': '{{ .Lastmod.Format "2006-01-02"  }}',
 		{{- if eq .Kind "page" }}'pageReadingTimeMinutes': {{ .ReadingTime }},
 		'pageReadingTimeSeconds': {{- $readTime := mul (div (countwords .Content) 220.0) 60 }}{{- math.Round $readTime}},
 		'pageWordCount': {{- .WordCount }},
