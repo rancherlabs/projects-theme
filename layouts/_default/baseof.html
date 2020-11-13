@@ -5,8 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{ .Title }}</title>
-	{{ if .Site.Params.gtm_id}}{{- partial "gtm.html" . }}{{ end }}
-
+		{{ if and (.Site.Params.gtm_id) (templates.Exists "partials/gtm.html") }}{{- partial "gtm.html" . }}{{ end }}
 
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
