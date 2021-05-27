@@ -13,22 +13,43 @@
       <a class="github-button" href="https://github.com/rancher/{{ .Site.Title }}/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork on GitHub">Fork</a>
     </div>
   </div>
-	<div class="sub-header">
+
+
+  	<div class="sub-header">
     <a href="{{ .Site.BaseURL }}">
       <img src="../images/logo-{{ .Site.Title }}.svg" alt="{{ .Site.Title }}">
     </a>
-    
-    <!-- nav -->
+              <a href="#main-menu"
+        id="main-menu-toggle"
+        class="menu-toggle"
+        aria-label="Open main menu">
+        <span class="sr-only">Open main menu</span>
+        <span aria-hidden="true">HAMBURGER</span>
+      </a>
     {{ with .Site.Menus.main }}
-    <nav>
+    <nav id="main-menu" class="main-menu" aria-label="Main menu">
+      <a href="#main-menu-toggle"
+          id="main-menu-close"
+          class="menu-close"
+          aria-label="Close main menu">
+          <span class="sr-only">Close main menu</span>
+          <span class="fa fa-close" aria-hidden="true"></span>
+        </a>
+
+        <h2 id="main-menu-heading" class="sr-only">Main menu</h2>
+
       <ul class="menu">
         {{ range . }}
         <li><a href="{{ .URL | relURL }}" class="btn no-bg">{{ .Name }}</a></li>
         {{ end }}
         <!-- github  -->
         <li><a href="{{ $.Site.Params.github }}" class="btn"><img src="../images/icon-github.svg"><span>Github</span></a></li>
-      </ul>  
+      </ul>   
     </nav>
     {{ end }}
+    <a href="#main-menu-toggle"
+        class="backdrop"
+        tabindex="-1"
+        aria-hidden="true" hidden></a>
   </div>
 </header>
