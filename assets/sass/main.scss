@@ -12,6 +12,7 @@
 html,
 body {
   font-size: 10px;
+  
 }
 
 body {
@@ -131,27 +132,27 @@ footer {
     height: 40px;
   }
 
-  .menu {
-    padding: 0;
-    margin: 0;
-    flex-direction: row;
-    align-items: center;
+  // .menu {
+  //   padding: 0;
+  //   margin: 0;
+  //   flex-direction: row;
+  //   align-items: center;
   
-    li {
-      display: inline-block;
-      padding: 0;
-      margin: 0;
-      border: none;
+  //   li {
+  //     display: inline-block;
+  //     padding: 0;
+  //     margin: 0;
+  //     border: none;
   
-      &:last-child {
-        padding-right: 0;
-      }
-    }
+  //     &:last-child {
+  //       padding-right: 0;
+  //     }
+  //   }
 
-    a.btn {
-      display: inline-flex;
-    }
-  }
+  //   a.btn {
+  //     display: inline-flex;
+  //   }
+  // }
 }
 
 footer {
@@ -161,24 +162,6 @@ footer {
   p, a {
     color: var(--light);
     margin: 0;
-  }
-
-  .project-icons {
-    a {
-      display: inline-block;
-      text-decoration: none;
-
-      img {
-        filter: brightness(10) grayscale(1);
-        margin: 0 0 0 10px;
-        border-radius: 3px;
-        transition: ease-in-out all .25s;
-        &:hover {
-          filter: brightness(1) grayscale(0);
-          background: white;
-        }
-      }
-    }
   }
 }
 
@@ -332,19 +315,6 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 2rem;
-
-  // &::before {
-  //   content: '';
-  //   width: 0;
-  //   padding-bottom: 100%;
-  //   grid-row: 1 / 1;
-  //   grid-column: 1 / 1;
-  // }
-
-  // > *:first-child {
-  //   grid-row: 1 / 1;
-  //   grid-column: 1 / 1;
-  // }
 }
 
 .grid-dynamic {
@@ -402,17 +372,6 @@ section {
     background-color: var(--secondary-color);
     color: var(--light);
     position: relative;
-
-    // &:after {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   right: -60px;
-    //   border-top: solid 30px transparent;
-    //   border-right: solid 30px transparent;
-    //   border-bottom: solid 30px var(--secondary-color);
-    //   border-left: solid 30px var(--secondary-color);
-    // }
   }
 
   .bg-light {
@@ -689,5 +648,208 @@ section {
     .bg-primary {
       grid-column: 1/span 8;
     }
+  }
+}
+
+/*menu test*/
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Base styles for all devices sizes, but mobile first */
+/* Hamburger menu icon/'button' styling */
+.menu-toggle {
+  display: inline-block;
+  padding: .75em 15px;
+  line-height: 1em;
+  font-size: 1em;
+  color: var(--dark);
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: var(--primary-color);
+}
+
+/* Offscreen menu styling */
+.main-menu {
+  position: absolute;
+  display: none;
+  left: -200px; /* push off the screen to the left for future animation */
+  top: 0;
+  height: 100%;
+	overflow-y: scroll;
+	overflow-x: visible;
+	transition: left 0.3s ease,
+				      box-shadow 0.3s ease;
+	z-index: 999;
+}
+
+.main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 2.5em 0 0;
+  /* Hide shadow w/ -8px while 'closed' */
+  -webkit-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+     -moz-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+          box-shadow: -8px 0 8px rgba(0,0,0,.5);
+  min-height: 100%;
+  width: 200px;
+  background: var(--dark);
+}
+
+/* Generic style for ALL hamburger menu links */
+.main-menu a {
+  display: block;
+  padding: .75em 15px;
+  line-height: 1em;
+  font-size: 1em;
+  color: var(--light);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dark);
+}
+
+.main-menu a.menu-close {
+  border-bottom: 0; /* no border for the X 'button' */
+}
+
+.main-menu li:first-child a {
+  border-top: 1px solid var(--dark); /* add top border only for the first link */
+}
+
+/* Hover & focus style */
+.main-menu a:hover,
+.main-menu a:focus {
+  background: var(--dark);
+  text-decoration: underline;
+}
+
+/* Close button positioning */
+.main-menu .menu-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* On small devices, allow it to toggle...*/
+/* Opening hamburger menu! */
+
+.main-menu:target,
+.main-menu[aria-expanded="true"] {
+  display: block;
+  left: 0; /* slide from -200px to the left edge at 0 */
+  outline: none;
+  /* fix box-shadow so it shows now */
+  -moz-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  -webkit-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  box-shadow: 3px 0 12px rgba(0,0,0,.25);
+}
+
+/* Close menu button */
+.main-menu:target .menu-close,
+.main-menu[aria-expanded="true"] .menu-close {
+  z-index: 1001;
+}
+
+/* Hamburger menu list */
+.main-menu:target ul,
+.main-menu[aria-expanded="true"] ul {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Backdrop */
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop{
+  position: absolute;
+  display: block;  
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: var(--dark);
+  background: rgba(0,0,0,.85);
+  cursor: default;
+}
+
+/*  If CSS supports `fixed`, like all good modern browsers */
+@supports (position: fixed) {
+  /* Allow backdrop to stay fixed and not "scroll" */
+  .main-menu,
+  .main-menu:target + .backdrop,
+  .main-menu[aria-expanded="true"] + .backdrop {
+    position: fixed;
+  }
+}
+
+/*  Larger screen styling */
+/* Horizontal menu (i.e. no hamburger) */
+
+@media (min-width: 768px) {
+  /* Hide hamburger menu/'button' */
+  .menu-toggle,
+  .main-menu .menu-close {
+    display: none;
+  }
+  
+  /* Undo positioning of off-canvas menu */
+  .main-menu {
+    position: relative;
+		left: auto;
+		top: auto;
+		height: auto;
+    display: block;
+    overflow: hidden;
+  }
+  
+  .main-menu ul {
+    display: flex; /* allows for full height of menu */
+    
+    /* Undo off-canvas styling */
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    height: auto;
+    width: auto;
+    background: none;
+        padding: 0;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+
+    li {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      border: none;
+  
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    a.btn {
+      display: inline-flex;
+    }
+  }
+
+  .main-menu a {
+    color: var(--secondary-color);
+    border: 0 !important; /* Remove borders from off-canvas styling */
+  }
+  
+  .main-menu a:hover,
+  .main-menu a:focus {
+    background: none; /* Remove background from off-canvas styling */
+    color: var(--primary-color);
   }
 }
